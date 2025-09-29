@@ -1,0 +1,1942 @@
+@charset "UTF-8";
+
+//色
+$color-bg:#F7DBCF;
+$color-text-pink: #FFA398;
+$color-white: #EEEEEE;
+$color-title: #FE7063;
+$color-main-pink: #E39895;
+
+
+
+//フォント
+$font-base: "Noto Sans JP", sans-serif;
+
+//レイアウト
+$breakpoints: (
+    "sp-L":"(max-width: 400px)", //280px~400px
+    "sp-M":"(max-width: 560px)", //SP=430px 400px~560px
+    "sp-H":"(max-width: 700px)", //560px~700px
+    "tab-L":"(max-width: 850px)", //700px~850px
+    "tab-M":"(max-width: 1000px)", //850px~1000px
+    "tab-H":"(max-width: 1240px)", //1000px~1240px
+    "pc-up":"(min-width: 1240px)",
+    "pc-L":"(max-width: 1440px)", //1240px~1440px
+    "pc-M-up":"(min-width: 1440px)",
+    "pc-M":"(max-width: 1650px)", //1440px~1650px
+    "pc-H":"(max-width: 1900px)", //1650px~1900px
+    "monitor":"(min-width: 1900px)", //1900px~
+);
+
+//メディアクエリ
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)}{
+        @content;
+    }
+}
+
+/* リセットCSS
+===================================== */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, button, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+html {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+li, dd {
+    list-style-type: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th, td {
+    font-weight: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+
+q, blockquote {
+    quotes: none;
+  }
+
+q {
+    &:before, &:after {
+      content: "";
+      content: none;
+    }
+}
+
+blockquote {
+    &:before, &:after {
+      content: "";
+      content: none;
+    }
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+img {
+    border: none;
+    vertical-align: bottom;
+}
+
+
+// 基本設定
+*,*::before,*::after {
+    box-sizing: border-box;
+}
+
+html,body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family:$font-base;
+    font-weight: 300;
+    color: #2f2f2f;
+
+    @include mq(sp-M) {
+        font-size: 14px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 12px;
+    }
+}
+
+ul,ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+//共通
+// フォントサイズ
+.size-micro {
+    font-size: 9px;
+    font-weight: 200;
+
+    @include mq(sp-M) {
+        font-size: 9px;
+        font-weight: 200;
+    }
+}
+
+.size-small-L {
+    font-size: 10px;
+
+    @include mq(sp-M) {
+        font-size: 10px;
+    }
+}
+.size-small-M {
+    font-size: 12px;
+
+    @include mq(sp-M) {
+        font-size: 12px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 10px;
+    }
+}
+.size-small-H {
+    font-size: 14px;
+
+    @include mq(sp-M) {
+        font-size: 14px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 12px;
+    }
+}
+
+.size-medium-L {
+    font-size: 18px;
+
+    @include mq(sp-M) {
+        font-size: 18px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 14px;
+    }
+}
+.size-medium-M {
+    font-size: 20px;
+
+    @include mq(sp-M) {
+        font-size: 20px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 16px;
+    }
+}
+.size-medium-H {
+    font-size: 24px;
+
+    @include mq(sp-M) {
+        font-size: 24px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 20px;
+    }
+}
+
+.size-large-L {
+    font-size: 28px;
+
+    @include mq(sp-M) {
+        font-size: 28px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 24px;
+    }
+}
+.size-large-M {
+    font-size: 30px;
+
+    @include mq(sp-M) {
+        font-size: 30px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 26px;
+    }
+}
+.size-large-H {
+    font-size: 54px;
+    
+    @include mq(sp-M) {
+        font-size: 54px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 44px;
+    }
+}
+
+// フォントウェイト
+.weight-300 {
+    font-weight: 300;
+}
+.weight-400 {
+    font-weight: 400;
+}
+.weight-500 {
+    font-weight: 500;
+}
+.weight-700 {
+    font-weight: 700;
+}
+
+//色
+.color-pink {
+    color: $color-text-pink;
+}
+
+.color-red {
+    color: $color-title;
+}
+
+//lp-body
+.lp-body {
+    background: $color-bg;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.lp-body-img {
+    position: relative;
+    height: 100vh;
+    aspect-ratio: 1785/2526;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include mq(tab-M) {
+        height: auto;
+        width: 100%;
+    }
+
+    img {
+        height: 100%;
+
+        @include mq(tab-M) {
+            height: auto;
+            width: 100%;
+        }
+    }
+}
+
+.lp-body-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    background: $color-white;
+    border: 3px solid $color-title;
+    line-height: 2.5em;
+    width: 85%;
+    max-width: 830px;
+}
+
+.section {
+
+
+    @include mq(sp-M) {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 60px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 40px;
+    }
+}
+
+.lp-body-title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: $color-title;
+    font-weight: 700;
+    position: relative;
+    line-height: 1.2em;
+
+    @include mq(sp-M) {
+        font-size: 20px;
+        margin-bottom: 35px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    &::before {
+        content: "";
+        height: 2px;
+        background: $color-title;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include mq(sp-M) {
+            width: 120px;
+            bottom: -8px;
+        }
+
+        @include mq(sp-L) {
+            width: 100px;
+            bottom: -5px;
+        }
+    }
+}
+
+.lp-btn {
+    background: $color-main-pink;
+    color: $color-white;
+    text-align: center;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq(sp-M) {
+        width: 148px;
+        height: 38px;
+        line-height: 38px;
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+    @include mq(sp-M) {
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 10px;
+        margin-top: 10px;
+    }
+
+    a {
+        display: block;
+    }
+}
+
+.sp-L-only {
+    display: none;
+
+    @include mq(sp-L) {
+        display: block;
+    }
+}
+
+.not-sp-L {
+    display: block;
+
+    @include mq(sp-L) {
+        display: none;
+    }
+}
+
+//lp_top
+.lp_top-head {
+    position: relative;
+    background: linear-gradient(-45deg, #F5DACD, $color-white 60%, #F5DACD);
+
+    @include mq(sp-M) {
+        padding-top: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    @include mq(sp-L) {
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.lp_top-organizer {
+    @include mq(sp-M) {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.lp_top-title-fure {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    @include mq(sp-M) {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+}
+
+.lp_top-title {
+    position: relative;
+    z-index: 3;
+
+    @include mq(sp-M) {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.lp_top-title-sub {
+    position: absolute;
+    bottom: 0;
+
+    @include mq(sp-M) {
+        left: 196px;
+    }
+
+    @include mq(sp-L) {
+        left: 160px;
+    }
+}
+
+.lp_top-date {
+    position: relative;
+    display: flex;
+    line-height: 2em;
+    z-index: 3;
+
+    @include mq(sp-M) {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.lp_top-date-sun {
+    writing-mode: vertical-rl;
+    text-align: center;
+    line-height: 1em;
+    margin-left: 3px;
+}
+
+.lp_top-date-time {
+    @include mq(sp-L) {
+        line-height: 36px;
+    }
+}
+
+.lp_top-text {
+    line-height: 1.2em;
+    position: relative;
+    z-index: 3;
+
+    @include mq(sp-M) {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.lp_top-title-koi {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    @include mq(sp-M){
+        margin-top: -15px;
+    }
+
+    @include mq(sp-L){
+        margin-top: -8px;
+    }
+}
+
+.lp_top-bottom {
+    background: $color-main-pink;
+    color: $color-white;
+    position: relative;
+    z-index: 1;
+
+    @include mq(sp-M) {
+        padding: 45px 20px 30px;
+        margin-top: -30px;
+    }
+
+    @include mq(sp-L) {
+        padding: 30px 15px 60px;
+        margin-top: -25px;
+    }
+}
+
+.lp_top-bottom-part {
+    display: flex;
+    margin-bottom: 15px;
+
+    @include mq(sp-M) {
+        margin-bottom: 15px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @include mq(sp-L) {
+        margin-bottom: 10px;
+    }
+}
+
+.lp_top-bottom-part-last {
+    margin-bottom: 0;
+}
+
+.lp_top-bottom-title {
+    border-radius: 12.5px;
+    background: $color-white;
+    color: $color-main-pink;
+    text-align: center;
+
+    @include mq(sp-M) {
+        flex: 0 0 52px;
+        height: 23px;
+        line-height: 23px;
+        margin-right: 10px;
+    }
+}
+
+.lp_top-bottom-text-paragraph {
+    margin-bottom: 3px;
+}
+
+.lp_top-bottom-text-last {
+    padding-top: 5px;
+}
+
+.lp-btn-light {
+    position: absolute;
+    bottom: 20px;
+    line-height: 1.2em;
+    background: $color-bg;
+    color: $color-main-pink;
+
+    @include mq(sp-M) {
+        width: 86px;
+        height: 40px;
+        right: 20px;
+        padding-top: 8px;
+    }
+
+    @include mq(sp-L) {
+        width: 120px;
+        height: 30px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+}
+
+//lp_worries
+.lp_worries {
+
+    @include mq(sp-M) {
+        margin-top: 40px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: 30px;
+    }
+}
+
+.lp_worries-lists {
+    
+    @include mq(sp-M) {
+        margin-top: 30px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: 20px;
+    }
+}
+
+.lp_worries-list {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    line-height: 1.2em;
+
+    @include mq(sp-M) {
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 15px;
+        margin-bottom: 10px;
+    }
+
+    &::before {
+        content: "";
+        border-radius: 50%;
+        background: $color-text-pink;
+        position: absolute;
+
+        @include mq(sp-M) {
+            width: 8px;
+            height: 8px;
+            left: -15px;
+            top: 4px;
+        }
+
+        @include mq(sp-L) {
+            width: 6px;
+            height: 6px;
+            left: -12px;
+        }
+    }
+}
+
+.lp_worries-arrow {
+    position: relative;
+    height: 40px;
+
+    @include mq(sp-M) {
+        height: 40px;
+    }
+
+    @include mq(sp-L) {
+        height: 30px;
+    }
+
+    &::before {
+        content: "";
+        border-bottom: 5px solid $color-text-pink;
+        border-left: 5px solid $color-text-pink;
+        transform: rotate(-45deg) skew(20deg, 20deg) translateX(-50%);
+        position: absolute;
+        left: 50%;
+        border-radius: 5px 0 5px 0;
+
+        @include mq(sp-M) {
+            width: 40px;
+            height: 40px;
+            top: -30px;
+        }
+
+        @include mq(sp-L) {
+            width: 30px;
+            height: 30px;
+            top: -20px;
+        }
+    }
+}
+
+.lp_worries-answer {
+    line-height: 1.2em;
+}
+
+.lp_worries-bottom {
+    display: flex;
+
+    @include mq(sp-M) {
+        margin-top: 10px;
+    }
+    
+    @include mq(sp-L) {
+        margin-top: 5px;
+    }
+}
+
+.lp_worries-bottom-left {
+    line-height: 1.2em;
+}
+
+.lp_worries-bottom-right {
+    @include mq(sp-M) {
+        flex: 0 0 200px;
+        margin-left: 10px;
+    }
+
+    @include mq(sp-L) {
+        flex: 0 0 120px;
+        margin-left: 5px;
+    }
+}
+
+.lp_worries-bottom-right-img {
+    aspect-ratio: 20/15;
+    border-radius: 20px;
+
+    @include mq(sp-M) {
+        width: 200px;
+    }
+
+    @include mq(sp-L) {
+        width: 120px;
+    }
+
+    img {
+        border-radius: 20px;
+    }
+}
+
+//スケジュール
+.lp_schedule-title {
+    color: $color-title;
+    border-bottom: 1px solid $color-title;
+    padding-bottom: 3px;
+    font-weight: 700;
+    line-height: 1.2em;
+
+    @include mq(sp-M) {
+        font-size: 20px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 16px;
+    }
+}
+
+.lp_schedule-lead {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.2em;
+    margin-top: 5px;
+}
+
+.lp_schedule-lead-sub {
+    margin-top: 0;
+}
+
+.lp_schedule-sub {
+    font-weight: 700;
+    line-height: 1.2em;
+
+    @include mq(sp-M) {
+        font-size: 14px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 12px;
+    }
+}
+
+.lp_schedule-subtitle {
+    display: flex;
+}
+
+.lp_schedule-subtitle-name {
+
+    @include mq(sp-M) {
+        margin-left: 10px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 5px;
+    }
+}
+
+// ひとつめ
+.lp_schedule-first {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq(sp-M) {
+        max-width: 430px;
+    }
+
+    @include mq(sp-L) {
+        max-width: 310px;
+    }
+}
+
+.lp_schedule-first-img {
+    position: relative;
+    border-radius: 50%;
+
+    @include mq(sp-M) {
+        margin-top: -30px;
+        margin-left: -35px;
+        width: 180px;
+        height: 180px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: -20px;
+        margin-left: -40px;
+        width: 150px;
+        height: 150px;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.lp_schedule-text-first {
+    position: absolute;
+
+    @include mq(sp-M) {
+        top: 30px;
+        left: 130px;
+    }
+
+    @include mq(sp-L) {
+        top: 20px;
+        left: 90px;
+    }
+}
+
+.lp_schedule-title-first {
+    display: flex;
+    align-items: center;
+
+    @include mq(sp-M) {
+        width: 160px;
+    }
+
+    @include mq(sp-L) {
+        width: 135px;
+    }
+}
+
+.lp_schedule-title-name-first {
+    margin-left: 15px;
+}
+
+.lp_schedule-lead-first {
+    margin-left: 25px;
+
+    @include mq(sp-M) {
+        margin-left: 25px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 10px;
+    }
+}
+
+//サブひとつめ
+.lp_schedule-first-sub {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq(sp-M) {
+        max-width: 430px;
+    }
+    
+    @include mq(sp-L) {
+        max-width: 310px;
+    }
+}
+.lp_schedule-arrow-first {
+    position: relative;
+
+    @include mq(sp-M) {
+        width: 130px;
+        top: -20px;
+        left: 70px;
+    }
+
+    @include mq(sp-L) {
+        width: 100px;
+        top: -15px;
+        left: 40px;
+    }
+}
+
+.lp_schedule-sub-first {
+    position: absolute;
+
+    @include mq(sp-M) {
+        top: 10px;
+        left: 100px;
+    }
+
+    @include mq(sp-L) {
+        top: 5px;
+        left: 60px;
+    }
+}
+
+.lp_schedule-sub-second {
+    position: absolute;
+
+    @include mq(sp-M) {
+        top: 50px;
+        left: 140px;
+    }
+
+    @include mq(sp-L) {
+        top: 35px;
+        left: 80px;
+    }
+}
+
+.lp_schedule-sub-second-lead {
+
+    @include mq(sp-M) {
+        margin-left: 63px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 45px;
+    }
+}
+
+// ふたつめ
+.lp_schedule-second {
+    position: relative;
+    
+    @include mq(sp-L) {
+        max-width: 310px;
+        margin-left: auto;
+    }
+}
+
+.lp_schedule-second-img {
+    position: relative;
+    border-radius: 50%;
+
+    @include mq(sp-M) {
+        margin-top: -80px;
+        margin-left: 220px;
+        width: 140px;
+        height: 140px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: -65px;
+        margin-left: 140px;
+        width: 110px;
+        height: 110px;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.lp_schedule-text-second {
+    position: absolute;
+    
+    @include mq(sp-M) {
+        top: 50px;
+        left: 20px;
+    }
+    
+    @include mq(sp-L) {
+        top: 25px;
+        left: 5px;
+    }
+}
+
+.lp_schedule-title-second {
+    align-items: center;
+    width: 175px;
+
+    @include mq(sp-M) {
+        width: 175px;
+    }
+
+    @include mq(sp-L) {
+        width: 145px;
+    }
+}
+
+.lp_schedule-title-name-second {
+    margin-left: 15px;
+
+    @include mq(sp-M) {
+        margin-left: 15px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 10px;
+    }
+}
+
+.lp_schedule-lead-second {
+    @include mq(sp-M) {
+        width: 200px;
+    }
+
+    @include mq(sp-L) {
+        width: 150px;
+    }
+}
+
+//サブふたつめ
+.lp_schedule-second-sub {
+    position: relative;
+    
+    @include mq(sp-L) {
+        max-width: 310px;
+        margin-left: auto;
+    }
+}
+.lp_schedule-arrow-second {
+    position: relative;
+    transform: scale(-1, 1) rotate(-5deg);
+
+    @include mq(sp-M) {
+        width: 90px;
+        top: -40px;
+        left: 145px;
+    }
+
+    @include mq(sp-L) {
+        width: 60px;
+        top: -30px;
+        left: 80px;
+        transform: scale(-1, 1) rotate(0deg);
+    }
+}
+
+.lp_schedule-sub-third {
+    width: 160px;
+    position: absolute;
+    top: 20px;
+    left: 200px;
+
+    @include mq(sp-M) {
+        width: 160px;
+        top: 20px;
+        left: 200px;
+    }
+
+    @include mq(sp-L) {
+        width: 140px;
+        top: 10px;
+        left: 110px;
+    }
+}
+
+.lp_schedule-sub-third-lead {
+    margin-left: 15px;
+}
+
+// みっつめ
+.lp_schedule-third {
+    position: relative;
+
+    @include mq(sp-L) {
+        max-width: 310px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.lp_schedule-third-img {
+    position: relative;
+    margin-left: 0px;
+    border-radius: 50%;
+
+    @include mq(sp-M) {
+        margin-top: -80px;
+        width: 160px;
+        height: 160px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: -40px;
+        width: 120px;
+        height: 120px;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.lp_schedule-text-third {
+    position: absolute;
+
+    @include mq(sp-M) {
+        top: 50px;
+        left: 160px;
+    }
+    
+    @include mq(sp-L) {
+        top: 40px;
+        left: 110px;
+    }
+}
+
+.lp_schedule-title-third {
+    align-items: center;
+
+    @include mq(sp-M) {
+        width: 190px;
+    }
+
+    @include mq(sp-L) {
+        width: 140px;
+    }
+}
+
+.lp_schedule-title-name-third {
+
+    @include mq(sp-M) {
+        margin-left: 30px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 10px;
+    }
+}
+
+.lp_schedule-lead-third {
+
+    @include mq(sp-M) {
+        width: 190px;
+    }
+
+    @include mq(sp-L) {
+        width: 140px;
+    }
+}
+
+//サブみっつめ
+.lp_schedule-third-sub {
+    position: relative;
+    
+    @include mq(sp-L) {
+        max-width: 310px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.lp_schedule-arrow-third {
+    position: relative;
+
+    @include mq(sp-M) {
+        width: 150px;
+        top: -20px;
+        left: 60px;
+    }
+
+    @include mq(sp-L) {
+        width: 110px;
+        top: -10px;
+        left: 30px;
+        transform: rotate(10deg);
+    }
+}
+
+.lp_schedule-sub-fourth {
+    position: absolute;
+
+    @include mq(sp-M) {
+        top: 15px;
+        left: 90px;
+    }
+
+    @include mq(sp-L) {
+        top: 10px;
+        left: 55px;
+    }
+}
+
+.lp_schedule-sub-fourth-lead {
+    @include mq(sp-M) {
+        margin-left: 63px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 30px;
+    }
+}
+
+.lp_schedule-sub-fifth {
+    position: absolute;
+
+    @include mq(sp-M) {
+        top: 70px;
+        left: 130px;
+    }
+
+    @include mq(sp-L) {
+        top: 60px;
+        left: 80px;
+    }
+}
+
+.lp_schedule-sub-fifth-lead {
+    @include mq(sp-M) {
+        margin-left: 63px;
+    }
+
+    @include mq(sp-L) {
+        margin-left: 40px;
+    }
+}
+
+// よっつめ
+.lp_schedule-fourth {
+    position: relative;
+    
+    @include mq(sp-L) {
+        max-width: 310px;
+        margin-left: auto;
+    }
+}
+
+.lp_schedule-fourth-img {
+    position: relative;
+    border-radius: 50%;
+
+    @include mq(sp-M) {
+        margin-top: -90px;
+        margin-left: 200px;
+        width: 200px;
+        height: 200px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: -40px;
+        margin-left: 100px;
+        width: 180px;
+        height: 180px;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.lp_schedule-text-fourth {
+    position: absolute;
+
+    @include mq(sp-M) {
+        top: 50px;
+        left: 0;
+    }
+ 
+    @include mq(sp-L) {
+        top: 130px;
+    }
+}
+
+.lp_schedule-title-fourth {
+    align-items: center;
+
+    @include mq(sp-M) {
+        width: 210px;
+    }
+
+    @include mq(sp-L) {
+        width: 175px;
+    }
+}
+
+.lp_schedule-title-name-fourth {
+    margin-left: 10px;
+}
+
+.lp_schedule-lead-fourth {
+
+    @include mq(sp-M) {
+        width: 200px;
+    }
+
+    @include mq(sp-L) {
+        width: 175px;
+    }
+}
+
+//サブよっつめ
+.lp_schedule-fourth-sub {
+    position: relative;
+    
+    @include mq(sp-L) {
+        max-width: 310px;
+        margin-left: auto;
+    }
+}
+
+.lp_schedule-arrow-fourth {
+    position: relative;
+
+    @include mq(sp-M) {
+        width: 80px;
+        top: -65px;
+        left: 120px;
+        transform: rotate(100deg);
+    }
+
+    @include mq(sp-L) {
+        width: 60px;
+        top: 0;
+        left: 150px;
+        transform: scale(-1, 1) rotate(20deg);
+    }
+}
+
+// いつつめ
+.lp_schedule-fifth {
+    position: relative;
+}
+
+.lp_schedule-fifth-img {
+    position: relative;
+    margin-top: -75px;
+    margin-left: -20px;
+    width: calc(100% + 40px);
+    height: 140px;
+
+    @include mq(sp-M) {
+        margin-top: -75px;
+        margin-left: -20px;
+        width: calc(100% + 40px);
+        height: 140px;
+    }
+
+    @include mq(sp-L) {
+        margin-top: 0;
+        margin-left: -15px;
+        width: calc(100% + 30px);
+    }
+}
+
+.lp_schedule-text-fifth {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    z-index: 3;
+}
+
+.lp_schedule-title-fifth {
+    align-items: center;
+
+    @include mq(sp-M) {
+        width: 160px;
+    }
+
+    @include mq(sp-L) {
+        width: 130px;
+    }
+}
+
+.lp_schedule-lead-fifth {
+    @include mq(sp-M) {
+        width: 160px;
+    }
+
+    @include mq(sp-L) {
+        width: 130px;
+    }
+}
+
+//イベント特徴
+.lp_feature-reviews {
+    position: relative;
+}
+
+.lp_feature-text {
+    position: relative;
+    z-index: 5;
+}
+
+.lp_feature-reviews-img {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.lp_feature-reviews-text {
+    position: relative;
+    display: inline-block;
+    background: $color-white;
+    border-radius: 50px;
+    box-shadow: 2px 2px 0px $color-text-pink;
+    z-index: 4;
+
+    @include mq(sp-M) {
+        padding: 10px 14px;
+    }
+
+    @include mq(sp-L) {
+        padding: 6px 10px;
+    }
+
+    &::before {
+        content: "";
+        background: $color-text-pink;
+        clip-path: polygon(100% 0, 90% 100%, 60% 100%);
+        position: absolute;
+
+        @include mq(sp-M) {
+            width: 25px;
+            height: 19px;
+        }
+
+        @include mq(sp-L) {
+            width: 20px;
+            height: 14px;
+        }
+    }
+
+    &::after {
+        content: "";
+        background: $color-white;
+        clip-path: polygon(100% 0, 75% 100%, 0 100%);
+        position: absolute;
+
+        @include mq(sp-M) {
+            width: 25px;
+            height: 20px;
+        }
+
+        @include mq(sp-L) {
+            width: 20px;
+            height: 15px;
+        }
+    }
+}
+
+// reviews-first
+.lp_feature-reviews-first {
+    @include mq(sp-M) {
+        height: 220px;
+    }
+
+    @include mq(sp-L) {
+        height: 180px;
+        max-width: 310px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.lp_feature-reviews-img-first {
+
+    @include mq(sp-M) {
+        width: 220px;
+        height: 220px;
+        top: -10px;
+        right: -30px;
+    }
+
+    @include mq(sp-L) {
+        width: 180px;
+        height: 180px;
+        right: -20px;
+    }
+}
+
+.lp_feature-reviews-text-first {
+    @include mq(sp-M) {
+        top: 140px;
+    }
+    
+    &::before {
+        right: 25px;
+
+        @include mq(sp-M) {
+            top: -19px;
+        }
+
+        @include mq(sp-L) {
+            top: -14px;
+        }
+    }
+
+    &::after {
+        right: 25px;
+
+        @include mq(sp-M) {
+            top: -19px;
+        }
+
+        @include mq(sp-L) {
+            top: -14px;
+        }
+    }
+}
+
+// reviews-second
+.lp_feature-reviews-second {
+
+    @include mq(sp-M) {
+        height: 160px;
+    }
+
+    @include mq(sp-L) {
+        height: 120px;
+        max-width: 310px;
+        margin-right: auto;
+    }
+}
+
+.lp_feature-reviews-img-second {
+    @include mq(sp-M) {
+        width: 160px;
+        height: 160px;
+        top: 0;
+        left: -25px;
+    }
+
+    @include mq(sp-L) {
+        width: 120px;
+        height: 120px;
+        top: 10px
+    }
+}
+
+.lp_feature-reviews-text-second {
+    @include mq(sp-M) {
+        top: -20px;
+        left: 60px;
+    }
+
+    @include mq(sp-L) {
+        top: 0px;
+        left: 40px;
+    }
+
+    &::before {
+        left: 25px;
+        transform: rotate(180deg);
+
+        @include mq(sp-M) {
+            bottom: -19px;
+        }
+
+        @include mq(sp-L) {
+            bottom: -14px;
+        }
+    }
+
+    &::after {
+        left: 25px;
+        transform: rotate(180deg);
+
+        @include mq(sp-M) {
+            bottom: -19px;
+        }
+
+        @include mq(sp-L) {
+            bottom: -14px;
+        }
+    }
+}
+
+// reviews-third
+.lp_feature-reviews-third {
+    @include mq(sp-M) {
+        height: 200px;
+    }
+
+    @include mq(sp-L) {
+        height: 180px;
+        max-width: 310px;
+        margin-left: auto;
+    }
+}
+
+.lp_feature-reviews-img-third {
+
+    @include mq(sp-M) {
+        width: 300px;
+        height: 300px;
+        top: -10px;
+        right: -30px;
+    }
+
+    @include mq(sp-L) {
+        width: 240px;
+        height: 240px;
+        right: -40px;
+    }
+}
+
+.lp_feature-reviews-text-third {
+    top: 10px;
+    
+    &::before {
+        right: 25px;
+        transform: scale(-1, 1) rotate(180deg);
+
+        @include mq(sp-M) {
+            bottom: -19px;
+        }
+
+        @include mq(sp-L) {
+            bottom: -14px;
+        }
+    }
+
+    &::after {
+        right: 25px;
+        transform: scale(-1, 1) rotate(180deg);
+
+        @include mq(sp-M) {
+            bottom: -19px;
+        }
+
+        @include mq(sp-L) {
+            bottom: -14px;
+        }
+    }
+}
+
+.lp-btn-features {
+    position: relative;
+    margin-left: 0;
+    z-index: 10;
+}
+
+// 情報
+.lp-body-title_info {
+    &::before {
+        @include mq(sp-M) {
+            width: 60px;
+        }
+
+        @include mq(sp-L) {
+            width: 40px;
+        }
+    }
+}
+
+.lp_info-part {
+    @include mq(sp-M) {
+        margin-bottom: 15px;
+    }
+
+    @include mq(sp-L) {
+        margin-bottom: 10px;
+    }
+}
+
+.lp_info-title {
+    display: block;
+    background: $color-text-pink;
+    color: $color-white;
+    border-radius: 0 50px 50px 0;
+
+    @include mq(sp-M) {
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        margin-left: -20px;
+        margin-bottom: 5px;
+        padding-left: 20px;
+    }
+
+    @include mq(sp-L) {
+        width: 80px;
+        height: 24px;
+        line-height: 24px;
+        margin-left: -15px;
+        margin-bottom: 3px;
+        padding-left: 15px;
+    }
+}
+
+.lp_info-text {
+    line-height: 1.3em;
+}
+
+.lp_info-lead {
+    @include mq(sp-M) {
+        margin-top: 3px;
+        font-size: 10px;
+        font-weight: 200;
+        line-height: 1em;
+    }
+}
+
+.lp_info-map {
+    margin-top: 10px;
+    width: 100%;
+    height: 180px;
+
+    @include mq(sp-M) {
+        height: 180px;
+    }
+
+    @include mq(sp-L) {
+        height: 120px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+//FAQ
+.lp-body-title_faq {
+    &::before {
+        @include mq(sp-M) {
+            width: 30px;
+        }
+
+        @include mq(sp-L) {
+            width: 20px;
+        }
+    }
+}
+
+.lp_faq-part {
+    border-bottom: 1px solid $color-text-pink;
+
+    @include mq(sp-M) {
+        margin-bottom: 15px;
+        margin-left: 30px;
+        margin-right: 20px;
+    }
+
+    @include mq(sp-L) {
+        margin-bottom: 10px;
+    }
+}
+
+.lp_faq-question {
+    display: flex;
+}
+
+.question-mark, .answer-mark {
+    color: $color-white;
+    background: $color-text-pink;
+    border-radius: 50%;
+    text-align: center;
+    margin-bottom: -1px;
+
+    @include mq(sp-M) {
+        font-size: 12px;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+        margin-left: -13px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 10px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        margin-left: -10px;
+    }
+}
+
+.question-text, .answer-text {
+    margin-left: 10px;
+
+    @include mq(sp-M) {
+        line-height: 25px;
+    }
+
+    @include mq(sp-L) {
+        line-height: 19px;
+    }
+}
+
+.question-button {
+    display: block;
+    background: $color-text-pink;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 5px;
+
+    @include mq(sp-M) {
+        width: 12px;
+        height: 10px;
+        margin-bottom: 6px;
+    }
+
+    @include mq(sp-L) {
+        width: 8px;
+        height: 6px;
+        margin-bottom: 4px;
+    }
+}
+
+.lp_faq-answer {
+    display: flex;
+    padding-top: 5px;
+    border-top: 1px dotted $color-text-pink;
+
+    @include mq(sp-M) {
+        padding-top: 5px;
+    }
+
+    @include mq(sp-L) {
+        padding-top: 3px;
+    }
+}
+
+
+//参加申し込みフォーム
+
+//フッター
+footer {
+    background: #665F58;
+    color: $color-bg;
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(sp-M) {
+        padding: 20px;
+    }
+    
+    @include mq(sp-L) {
+        padding: 15px;
+    }
+}
+
+.footer-organizer {
+    margin-top: 20px;
+}
+
+.footer-right {
+    margin-top: auto;
+
+    @include mq(sp-L) {
+        flex: 0 0 60px;
+    }
+}
+
+.footer-sns {
+    display: flex;
+    justify-content: space-around;
+
+    a {
+        margin-top: 5px;
+        display: block;
+        height: 30px;
+        width: 30px;
+
+        @include mq(sp-L) {
+            height: 20px;
+            width: 20px;
+        }
+    }
+}
+
+.fa-brands {
+    &::before {
+        line-height: 30px;
+
+        @include mq(sp-L) {
+            line-height: 20px;
+        }
+    }
+}
+
+.fa-instagram {
+    color: $color-text-pink;
+    font-size: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+
+    @include mq(tab-M) {
+        font-size: 30px;
+    }
+
+    @include mq(sp-L) {
+        font-size: 20px;
+    }
+}
+
+.fa-line {
+    font-size: 26px;
+
+    @include mq(sp-L) {
+        font-size: 16px;
+    }
+}
