@@ -2,20 +2,20 @@
 new WOW().init();
 
 
-jQuery('a[href^="#"]').on('click', function (e) {
-    e.preventDefault();
+jQuery('a[href^="#"]').on('click',function() {
 
-    const targetId = jQuery(this).attr('href');
-    const $target = jQuery(targetId);
-    const $container = jQuery('.homepage');
-    const offset = 30; // 上に空けたい余白
-
-    if ($target.length) {
-        // スクロール対象要素内での相対位置を取得
-        const targetTop = $target.offset().top - $container.offset().top + $container.scrollTop() - offset;
-
-        $container.animate({ scrollTop: targetTop }, 400);
+    var header = jQuery('.bg-menu-links').innerHeight();
+    var offsetAdjustment = 20; // 追加で調整するピクセル数
+    var id = jQuery(this).attr('href');
+    var position = 0;
+    if ( id!= '#') {
+      position = jQuery(id).offset().top-offsetAdjustment;
     }
+  
+    jQuery('html,body').animate({
+      scrollTop : position
+    },
+    300);
 });
 
 
