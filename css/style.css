@@ -4550,8 +4550,6 @@ a {
   margin-top: 10px;
   width: 100%;
   height: 300px;
-  position: relative;
-  z-index: 8;
 }
 @media (max-width: 1900px) {
   .lp_info-map {
@@ -4932,6 +4930,8 @@ a {
   width: 700px;
   margin-top: -20px;
   margin-bottom: 60px;
+  position: relative;
+  z-index: 6;
 }
 @media (max-width: 1900px) {
   .form-body {
@@ -4988,51 +4988,46 @@ a {
 }
 .form-body iframe {
   width: 100%;
-  height: 2070px;
+  height: 1960px;
 }
 @media (max-width: 1900px) {
   .form-body iframe {
-    height: 2180px;
+    height: 2050px;
   }
 }
 @media (max-width: 1650px) {
   .form-body iframe {
-    height: 2280px;
+    height: 2140px;
   }
 }
 @media (max-width: 1440px) {
   .form-body iframe {
-    height: 2460px;
+    height: 2300px;
   }
 }
 @media (max-width: 1240px) {
   .form-body iframe {
-    height: 2070px;
+    height: 1960px;
   }
 }
 @media (max-width: 1000px) {
   .form-body iframe {
-    height: 2180px;
+    height: 2050px;
   }
 }
 @media (max-width: 850px) {
   .form-body iframe {
-    height: 2280px;
-  }
-}
-@media (max-width: 700px) {
-  .form-body iframe {
-    height: 2260px;
+    height: 2140px;
   }
 }
 @media (max-width: 560px) {
   .form-body iframe {
-    height: 2460px;
+    height: 2300px;
   }
 }
 @media (max-width: 400px) {
   .form-body iframe {
-    height: 2910px;
+    height: 2700px;
   }
 }
 
